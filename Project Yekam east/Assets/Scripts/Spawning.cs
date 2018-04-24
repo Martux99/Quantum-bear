@@ -9,10 +9,10 @@ public class Spawning : MonoBehaviour
     public Vector3 SpaceUpRight;
     public Vector3 SpaceDownRight;
     public GameObject plasma;
-    public GameObject Cuantico;
+    public GameObject Cuantico;//El plasma cuantico
     Vector3 position;
-    float quanticTime = 2f;
-    float time = 5f;
+    float quanticTime = 20f;
+    float time = 3f;
     void Start ()
     {
         StartCoroutine(Generacion());
@@ -23,7 +23,7 @@ public class Spawning : MonoBehaviour
         SpaceDownLeft = Camera.main.ScreenToWorldPoint(new Vector3());
         SpaceUpLeft = new Vector3(SpaceDownLeft.x , SpaceDownLeft.y+10, SpaceDownLeft.z);
         SpaceUpRight = new Vector3(SpaceDownLeft.x +5.5f, SpaceDownLeft.y+10, SpaceDownLeft.z);
-        SpaceDownRight = new Vector3(SpaceDownLeft.x+5.5f, SpaceDownLeft.y , SpaceDownLeft.z);
+
     }
     IEnumerator Generacion()
     {
@@ -41,7 +41,7 @@ public class Spawning : MonoBehaviour
             {
                 yield return new WaitForSeconds(time);
                 Debug.Log("Brandom1");
-                float eminem = Random.Range(SpaceUpRight.y, SpaceDownRight.y);
+                float eminem = Random.Range(SpaceUpRight.y, SpaceDownLeft.y);
                 position = new Vector3(3, eminem, 0);
                 Instantiate(plasma, position, Quaternion.identity);
             }
@@ -63,7 +63,7 @@ public class Spawning : MonoBehaviour
             {
                 yield return new WaitForSeconds(quanticTime);
                 Debug.Log("Brandom1");
-                float eminem = Random.Range(SpaceUpRight.y, SpaceDownRight.y);
+                float eminem = Random.Range(SpaceUpRight.y, SpaceDownLeft.y);
                 position = new Vector3(3, eminem, 0);
                 Instantiate(Cuantico, position, Quaternion.identity);
             }

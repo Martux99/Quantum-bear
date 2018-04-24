@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  position: {fileID: 1629733165674772}
+  Plasma: {fileID: 1629733165674772}
 --- !u!114 &114916089795946916
 MonoBehaviour:
   m_ObjectHideFlags: 1

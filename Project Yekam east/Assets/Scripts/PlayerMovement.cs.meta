@@ -5,7 +5,11 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - cube: {fileID: 1862751004801814, guid: fc5602aaee694894dbcbe80a1711be16, type: 2}
+  - player: {fileID: 4958409824684430, guid: fc5602aaee694894dbcbe80a1711be16, type: 2}
+  - Kodak: {fileID: 4759228744697956, guid: a5e14bd2cb2f0d8469189815464faea7, type: 2}
+  - rbd2: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

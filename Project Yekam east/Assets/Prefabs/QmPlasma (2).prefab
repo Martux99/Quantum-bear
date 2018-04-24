@@ -141,4 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9fc7b94a11a5994292e8413a122af26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {fileID: 1469500557524624}
+  waitTime: 1
+  Movimiento: 0
+  plasma: {fileID: 1469500557524624}
+  colli: {fileID: 61714563196196810}
