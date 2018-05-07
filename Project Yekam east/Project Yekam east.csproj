@@ -287,6 +287,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Grounded.cs" />
     <Compile Include="Assets\Scripts\LaserScript.cs" />
+    <Compile Include="Assets\Scripts\LPlasma.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\QPlasma.cs" />
     <Compile Include="Assets\Scripts\QuantumMovement.cs" />

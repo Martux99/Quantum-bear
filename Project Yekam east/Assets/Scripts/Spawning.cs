@@ -10,20 +10,21 @@ public class Spawning : MonoBehaviour
     public Vector3 SpaceDownRight;
     public GameObject plasma;
     public GameObject Cuantico;//El plasma cuantico
+    public GameObject largePlasmax;
+    public GameObject largePlasmay;
     Vector3 position;
     float quanticTime = 20f;
     float time = 3f;
+    float greatTime = 1f;
     void Start ()
     {
         StartCoroutine(Generacion());
         StartCoroutine(GeneracionCuantica());
+        StartCoroutine(GeneracionGrande());
     }
 	void FixedUpdate ()
     {
-        SpaceDownLeft = Camera.main.ScreenToWorldPoint(new Vector3());
-        SpaceUpLeft = new Vector3(SpaceDownLeft.x , SpaceDownLeft.y+10, SpaceDownLeft.z);
-        SpaceUpRight = new Vector3(SpaceDownLeft.x +5.5f, SpaceDownLeft.y+10, SpaceDownLeft.z);
-
+        
     }
     IEnumerator Generacion()
     {
@@ -33,6 +34,7 @@ public class Spawning : MonoBehaviour
             if (brandom == 0)
             {
                 yield return new WaitForSeconds(time);
+                Triangulacion();
                 float eminem = Random.Range(SpaceUpLeft.y, SpaceDownLeft.y);
                 position = new Vector3(-3, eminem, 0);
                 Instantiate(plasma, position, Quaternion.identity);
@@ -40,7 +42,7 @@ public class Spawning : MonoBehaviour
             if (brandom == 1)
             {
                 yield return new WaitForSeconds(time);
-                Debug.Log("Brandom1");
+                Triangulacion();
                 float eminem = Random.Range(SpaceUpRight.y, SpaceDownLeft.y);
                 position = new Vector3(3, eminem, 0);
                 Instantiate(plasma, position, Quaternion.identity);
@@ -51,10 +53,11 @@ public class Spawning : MonoBehaviour
     {
         while (true)
         {
-            int brandom = Random.Range(0, 2);
+            int brandom = Random.Range(-1, 2);
             if (brandom == 0)
             {
                 yield return new WaitForSeconds(quanticTime);
+                Triangulacion();
                 float eminem = Random.Range(SpaceUpLeft.y, SpaceDownLeft.y);
                 position = new Vector3(-3, eminem, 0);
                 Instantiate(Cuantico, position, Quaternion.identity);
@@ -62,11 +65,40 @@ public class Spawning : MonoBehaviour
             if (brandom == 1)
             {
                 yield return new WaitForSeconds(quanticTime);
-                Debug.Log("Brandom1");
+                Triangulacion();
                 float eminem = Random.Range(SpaceUpRight.y, SpaceDownLeft.y);
                 position = new Vector3(3, eminem, 0);
                 Instantiate(Cuantico, position, Quaternion.identity);
             }
         }
+    }
+    IEnumerator GeneracionGrande()
+    {
+        while (true)
+        {
+            int brandom = Random.Range(-1, 2);
+            if (brandom == 0)
+            {
+                yield return new WaitForSeconds(time);
+                Triangulacion();
+                float eminem = Random.Range(SpaceUpLeft.x, SpaceUpRight.x);
+                position = new Vector3(eminem, SpaceDownLeft.y+5, 0);
+                Instantiate(largePlasmay, position, Quaternion.identity);
+            }
+            if (brandom == 1)
+            {
+                yield return new WaitForSeconds(time);
+                Triangulacion();
+                float eminem = Random.Range(SpaceUpLeft.y, SpaceDownLeft.y);
+                position = new Vector3(0, eminem, 0);
+                Instantiate(largePlasmax, position, Quaternion.identity);
+            }
+        }
+    }
+    void Triangulacion()
+    {
+        SpaceDownLeft = Camera.main.ScreenToWorldPoint(new Vector3());
+        SpaceUpLeft = new Vector3(SpaceDownLeft.x, SpaceDownLeft.y + 10, SpaceDownLeft.z);
+        SpaceUpRight = new Vector3(SpaceDownLeft.x + 5.5f, SpaceDownLeft.y + 10, SpaceDownLeft.z);
     }
 }

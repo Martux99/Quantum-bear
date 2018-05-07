@@ -340,6 +340,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114944848532374752, guid: a5e14bd2cb2f0d8469189815464faea7,
+        type: 2}
+      propertyPath: largePlasmax
+      value: 
+      objectReference: {fileID: 1725694846973046, guid: e6d5ecbad38019046a4eb3f6673cc2c2,
+        type: 2}
+    - target: {fileID: 114944848532374752, guid: a5e14bd2cb2f0d8469189815464faea7,
+        type: 2}
+      propertyPath: largePlasmay
+      value: 
+      objectReference: {fileID: 1624616933923734, guid: 010e2db916e81c344977ca3c7195aaf8,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5e14bd2cb2f0d8469189815464faea7, type: 2}
   m_IsPrefabParent: 0

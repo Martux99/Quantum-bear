@@ -14,7 +14,9 @@ public class PlayerMovement : MonoBehaviour {
     public bool direccion = true;
     public bool notouch=true;
     public bool pelon = true;
-
+    public bool gas = true;
+    public float tiempoinicio;
+    public float tiempo;
     public int cuenta;
 
 	void FixedUpdate ()
@@ -31,8 +33,25 @@ public class PlayerMovement : MonoBehaviour {
         cuenta = Input.touchCount;
         if (cuenta > 0)
         {
-            player.Translate(Vector3.up * Time.deltaTime * 5);
+            if (gas == true)
+            {
+                tiempoinicio = -Time.time;
+                gas = false;
+            }
+            tiempo = Time.time + tiempoinicio;
+            if (tiempo < 10)
+            {
+                player.Translate(Vector3.up * Time.deltaTime * 5);
+            }
             Touch touch = (Input.GetTouch(0));
+            if (Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, 10)).x < 0)
+            {
+                direccion = false;
+            }
+            if (Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, 10)).x > 0)
+            {
+                direccion = true;
+            }
             if (pelon == true)
             {
                 hector= Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, 10));
@@ -62,11 +81,35 @@ public class PlayerMovement : MonoBehaviour {
                 Debug.Log("derecha");
                 player.Translate(Vector3.right * Time.deltaTime * 3f);
             }
+
+            
         }
         if (cuenta==0  && grounded==false)
             {
                 player.Translate(Vector3.down * Time.deltaTime * 9);
-            notouch = true;
+                notouch = true;
             }
-	}
+        if (cuenta == 0 && grounded == true)
+        {
+            gas = true;
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            grounded = false;
+        }
+    }
 }
