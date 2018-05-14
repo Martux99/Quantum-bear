@@ -16,6 +16,15 @@ public class Spawning : MonoBehaviour
     float quanticTime = 15f;
     float time = 3f;
     float greatTime = 30f;
+    private void Awake()
+    {
+        /*
+        Screen.autorotateToPortrait = true;
+        Screen.autorotateToLandscapeLeft = false;
+        Screen.autorotateToLandscapeRight = false;
+        Screen.autorotateToPortraitUpsideDown = false;
+        Screen.orientation = ScreenOrientation.AutoRotation;*/
+    }
     void Start ()
     {
         StartCoroutine(Generacion());

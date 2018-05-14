@@ -508,7 +508,8 @@ MonoBehaviour:
   rbd2: {fileID: 778980376}
   hector: {x: 0, y: 0, z: 0}
   whereto: {x: 0, y: 0, z: 0}
-  grounded: 1
+  Y_Animation: {fileID: 778980375}
+  grounded: 0
   direccion: 0
   notouch: 1
   pelon: 1

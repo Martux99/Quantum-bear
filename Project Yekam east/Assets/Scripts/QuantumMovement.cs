@@ -18,7 +18,7 @@ public class QuantumMovement : MonoBehaviour {
     {
         yield return new WaitForSeconds(waitTime);
         Movimiento = true;
-        Debug.Log(Movimiento);
+        
     }
     void Start ()
     {
