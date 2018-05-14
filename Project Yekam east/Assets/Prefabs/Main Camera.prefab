@@ -103,6 +103,10 @@ MonoBehaviour:
   SpaceDownRight: {x: 0, y: 0, z: 0}
   plasma: {fileID: 1629733165674772, guid: 449ca85d4470d6341b317717a9ddad6b, type: 2}
   Cuantico: {fileID: 1351751789280366, guid: e0683ffd7ffe1fd45b207413a37e9cb1, type: 2}
+  largePlasmax: {fileID: 1725694846973046, guid: e6d5ecbad38019046a4eb3f6673cc2c2,
+    type: 2}
+  largePlasmay: {fileID: 1736344701585150, guid: 010e2db916e81c344977ca3c7195aaf8,
+    type: 2}
 --- !u!124 &124179628740505550
 Behaviour:
   m_ObjectHideFlags: 1

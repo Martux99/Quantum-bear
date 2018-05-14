@@ -16,7 +16,6 @@ public class QuantumMovement : MonoBehaviour {
     }
     IEnumerator GeneracionCuantica()
     {
-        Debug.Log("la corrutina antes del tiempo de espera");
         yield return new WaitForSeconds(waitTime);
         Movimiento = true;
         Debug.Log(Movimiento);

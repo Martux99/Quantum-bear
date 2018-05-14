@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LPlasma : MonoBehaviour {
+    public GameObject camaracarnal;
     public GameObject plasma;
     public Collider2D colli;
     public float time = 1f;
@@ -10,6 +11,8 @@ public class LPlasma : MonoBehaviour {
     bool activo = false;
 	void Start ()
     {
+        camaracarnal = GameObject.Find("Main Camera");
+        SetParent();
         colli.enabled = false;
         StartCoroutine(inicio());
         StartCoroutine(final());
@@ -18,6 +21,10 @@ public class LPlasma : MonoBehaviour {
     {
         yield return new WaitForSeconds(time);
         activo = true;
+    }
+    void SetParent()
+    {
+        plasma.transform.parent = camaracarnal.transform;
     }
 	void Update ()
     {

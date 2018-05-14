@@ -13,9 +13,9 @@ public class Spawning : MonoBehaviour
     public GameObject largePlasmax;
     public GameObject largePlasmay;
     Vector3 position;
-    float quanticTime = 20f;
+    float quanticTime = 15f;
     float time = 3f;
-    float greatTime = 1f;
+    float greatTime = 30f;
     void Start ()
     {
         StartCoroutine(Generacion());
@@ -79,15 +79,16 @@ public class Spawning : MonoBehaviour
             int brandom = Random.Range(-1, 2);
             if (brandom == 0)
             {
-                yield return new WaitForSeconds(time);
+                yield return new WaitForSeconds(greatTime);
                 Triangulacion();
                 float eminem = Random.Range(SpaceUpLeft.x, SpaceUpRight.x);
                 position = new Vector3(eminem, SpaceDownLeft.y+5, 0);
                 Instantiate(largePlasmay, position, Quaternion.identity);
+                
             }
             if (brandom == 1)
             {
-                yield return new WaitForSeconds(time);
+                yield return new WaitForSeconds(greatTime);
                 Triangulacion();
                 float eminem = Random.Range(SpaceUpLeft.y, SpaceDownLeft.y);
                 position = new Vector3(0, eminem, 0);

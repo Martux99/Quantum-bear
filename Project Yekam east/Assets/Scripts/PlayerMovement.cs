@@ -73,18 +73,16 @@ public class PlayerMovement : MonoBehaviour {
             notouch = false;
             if (direccion==false && (cube.transform.position.x > new Vector3(-2.4f,0,0).x && cuenta<2))
             {
-                Debug.Log("izquierda");
                 player.Translate(Vector3.left * Time.deltaTime * 3f);
             }
             else if (direccion==true && (cube.transform.position.x < new Vector3(2.4f, 0, 0).x && cuenta<2))
             {
-                Debug.Log("derecha");
                 player.Translate(Vector3.right * Time.deltaTime * 3f);
             }
 
             
         }
-        if (cuenta==0  && grounded==false)
+        if ((cuenta==0  && grounded==false)||tiempo>10)
             {
                 player.Translate(Vector3.down * Time.deltaTime * 9);
                 notouch = true;
