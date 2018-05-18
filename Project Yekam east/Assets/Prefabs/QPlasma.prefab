@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 50848637449517536}
   m_Layer: 0
   m_Name: QPlasma
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,19 +142,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  quanticTime: 2
-  waitTime: 2
   tiempo: 0
   plasmaCuantico: {fileID: 1351751789280366}
   plasma1: {fileID: 1897793969700236, guid: 9902fc9554d1b8a4f94685c25c7c8ba6, type: 2}
   plasma2: {fileID: 1469500557524624, guid: 00eff0efe3c28424586e1901027c0fb8, type: 2}
-  plasmasprite: {fileID: 1592210517648434, guid: e28bdf30ebdef9e4c8e7ac68c6174f4b,
-    type: 2}
-  plasmasprite1: {fileID: 1026916196903950, guid: 74b4e4d559a7b1c43931408f3ab1e4ac,
-    type: 2}
   SpaceDownLeft: {x: 0, y: 0, z: 0}
   SpaceUpLeft: {x: 0, y: 0, z: 0}
   SpaceUpRight: {x: 0, y: 0, z: 0}
-  SpaceDownRight: {x: 0, y: 0, z: 0}
   Reaparicion: {x: 0, y: 0, z: 0}
   Reaparicion1: {x: 0, y: 0, z: 0}

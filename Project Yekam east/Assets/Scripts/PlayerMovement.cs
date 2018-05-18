@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
@@ -10,6 +11,8 @@ public class PlayerMovement : MonoBehaviour {
     public Vector3 hector;
     public Vector3 whereto;
     public Animator Y_Animation;
+    
+    
 
     bool cambio;
     bool direccion2=false;
@@ -21,10 +24,21 @@ public class PlayerMovement : MonoBehaviour {
     public float tiempoinicio;
     public float tiempo;
     public int cuenta;
-    
-
-	void FixedUpdate ()
+    public static int vida =3;
+    private void Start()
     {
+        vida = 3;
+    }
+    private void Update ()
+    {
+        if (vida < 1)
+        {
+            Destroy(cube);
+        }
+    }
+    void FixedUpdate ()
+    {
+        
         //Vector3 cannon = new Vector3(0, player.position.y+3.7f, -10);
         if (player.position.y > Kodak.position.y+2)
         {
@@ -109,6 +123,15 @@ public class PlayerMovement : MonoBehaviour {
 
             
         }
+        if (grounded == true)
+        {
+            Y_Animation.SetBool("Falling", false);
+            Y_Animation.SetBool("OnFloor", true);
+        }
+        if (grounded==false)
+        {
+            Y_Animation.SetBool("OnFloor", false);
+        }
         if ((cuenta==0  && grounded==false)||tiempo>10)
         {
             Y_Animation.SetBool("Touching", false);
@@ -121,21 +144,14 @@ public class PlayerMovement : MonoBehaviour {
             gas = true;
         }
     }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Enemy")
         {
-            Y_Animation.SetBool("Falling", false);
-            Y_Animation.SetBool("OnFloor", true);
-            grounded = true;
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            Y_Animation.SetBool("OnFloor", false);
-            grounded = false;
+            Destroy(collision.gameObject);
+            vida--;
+            Y_Animation.SetInteger("Vida", vida);
         }
     }
 }
