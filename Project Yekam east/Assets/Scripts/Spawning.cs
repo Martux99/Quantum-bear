@@ -13,9 +13,9 @@ public class Spawning : MonoBehaviour
     public GameObject largePlasmax;
     public GameObject largePlasmay;
     Vector3 position;
-    float quanticTime = 15f;
-    float time = 3f;
-    float greatTime = 30f;
+    public float quanticTime = 15f;
+    public float time = 3f;
+    public float greatTime = 30f;
     private void Awake()
     {
         /*

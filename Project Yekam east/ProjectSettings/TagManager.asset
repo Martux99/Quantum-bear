@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Jugador
   - Enemy
+  - Checkpoint
+  - Final
   layers:
   - Default
   - TransparentFX

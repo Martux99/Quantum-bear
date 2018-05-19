@@ -14,7 +14,7 @@ public class Vida : MonoBehaviour {
 	void Update () {
 		if (PlayerMovement.vida < 1)
         {
-            Invoke("Reload", 1);
+            //Invoke("Reload", 1);
         }
         
     }

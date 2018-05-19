@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
+
     public GameObject cube;
     public Transform player;
     public Transform Kodak;
@@ -11,10 +12,10 @@ public class PlayerMovement : MonoBehaviour {
     public Vector3 hector;
     public Vector3 whereto;
     public Animator Y_Animation;
-    
-    
+    public Vector2 checkpose;
+    public Scene scene;
 
-    bool cambio;
+    public bool check;
     bool direccion2=false;
     public bool grounded = false;
     public bool direccion = false;
@@ -24,21 +25,32 @@ public class PlayerMovement : MonoBehaviour {
     public float tiempoinicio;
     public float tiempo;
     public int cuenta;
-    public static int vida =3;
+    public static int vida;
     private void Start()
     {
-        vida = 3;
+        vida = 6;
+        if (check == true)
+        {
+            cube.transform.position = checkpose;
+        }
     }
     private void Update ()
     {
         if (vida < 1)
         {
-            Destroy(cube);
+            cube.SetActive(false);
+            Invoke("Reload", 2);
         }
+    }
+    void Reload()
+    {
+        cube.transform.position = checkpose;
+        cube.SetActive(true);
+        vida = 6;
+        Kodak.transform.position = new Vector3  (0, cube.transform.position.y, Kodak.transform.position.z);
     }
     void FixedUpdate ()
     {
-        
         //Vector3 cannon = new Vector3(0, player.position.y+3.7f, -10);
         if (player.position.y > Kodak.position.y+2)
         {
@@ -96,32 +108,20 @@ public class PlayerMovement : MonoBehaviour {
             {
                 if (direccion2 == true)
                 {
-                   
                         cube.transform.localScale = new Vector3(-cube.transform.localScale.x, cube.transform.localScale.y, cube.transform.localScale.z);
-                        cambio = false;
-                   
-
                 }
                 direccion2 = direccion;
                 player.Translate(Vector3.left * Time.deltaTime * 3f);
-                
             }
             else if (direccion==true && (cube.transform.position.x < new Vector3(2.4f, 0, 0).x && cuenta<2))
             {
                 if (direccion2 == false)
                 {
-                   
                         cube.transform.localScale = new Vector3(-cube.transform.localScale.x, cube.transform.localScale.y, cube.transform.localScale.z);
-                        cambio = false;
-                    
-
                 }
                 direccion2 = direccion;
                 player.Translate(Vector3.right * Time.deltaTime * 3f);
-                
-            }
-
-            
+            }   
         }
         if (grounded == true)
         {
@@ -144,9 +144,15 @@ public class PlayerMovement : MonoBehaviour {
             gas = true;
         }
     }
-    
     private void OnCollisionEnter2D(Collision2D collision)
     {
+         if (collision.gameObject.tag == "Checkpoint")
+        {
+            collision.gameObject.SetActive(false);
+            Debug.Log("asdfg");
+            check = true;
+            checkpose = new Vector2(player.transform.position.x, player.transform.position.y);
+        }
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(collision.gameObject);
